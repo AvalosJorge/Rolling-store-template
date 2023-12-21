@@ -15,7 +15,8 @@ export const renderCartBody  = () =>{
   renderCartTotalPrice()
 }
 
-const totalPrice = document.getElementById("totalPrice")
+const totalPrice = 15000
+// document.getElementById("totalPrice")
 
 /**
  * @returns {} Renderiza la suma del precio de todos los productos en el carrito 
