@@ -32,7 +32,7 @@ signUpFormRepeatPassword.addEventListener('paste', e => e.preventDefault());
  */
 
 const emailFeedback = (email) =>{
-    const emailregex = /^[^/S@]+@[^/S@]+$\
+    const emailregex = /^[^/S@]+@[^/S@]+$/;
     const validacionemail = emailregex.test(email)
     if (validacionemail) {
         console.log("email correcto")
@@ -52,15 +52,16 @@ console.log("el correo es valido:",emailvalido)
  */
 
 const passwordFeedback = (password) =>{
-const passwordregex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*])
-const validatepassword = passwordregex.test(password)
+const passwordregex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*])[A-Za-z\d@$!%*?&]{8,}$/;
+const validatepassword = passwordregex.test(password);
 if (validatepassword) {
     console.log("password valido")
 } else {
     console.log("password invalido")
 }
 return validatepassword;
-}
+};
+
 // ejemplo
 const contraseñavalida = passwordFeedback("contraseña123456");
 console.log("contraseña valida", contraseñavalida)
@@ -87,12 +88,12 @@ const showSuccesfulSignUpModal = () =>{
     setTimeout(redirectIndex, 3000)
 }
 
-
 /**
  * 
  * @param {object} e Recibe el evento de submit del formulario
  * @returns Si la información del formulario es valida, debe registrar al usuario, logearlo, mostrar el modal de registro exitoso y redirigirlo a la página principal. 
  */
+
 const signUpSubmit = (e) =>{
     e.preventDefault();
     const username = document.getElementsByID("username").value;
