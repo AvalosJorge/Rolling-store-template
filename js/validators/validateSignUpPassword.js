@@ -7,5 +7,7 @@ import { passwordRegex } from "./passwordRegex.js"
  */
 
 export const validateSignUpPassword = (password) =>{
-
-}
+ const passwordregex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*])[A-Za-z\d@$!%*?&]{8,}$/;
+ const validatepassword = passwordregex.test(password);
+ return validatepassword;
+};
