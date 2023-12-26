@@ -32,8 +32,18 @@ signUpFormRepeatPassword.addEventListener('paste', e => e.preventDefault());
  */
 
 const emailFeedback = (email) =>{
-
+    const emailregex = /^[^/S@]+@[^/S@]+$\
+    const validacionemail = emailregex.test(email)
+    if (validacionemail) {
+        console.log("email correcto")
+    } else {
+        console.log("email incorrecto")
+    }
+    return invalidacionemail;
 }
+//ejemplo
+const emailvalido = emailFeedback("usuario@gmail.com");
+console.log("el correo es valido:",emailvalido)
 
 /**
  * 
@@ -42,9 +52,18 @@ const emailFeedback = (email) =>{
  */
 
 const passwordFeedback = (password) =>{
-
+const passwordregex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*])
+const validatepassword = passwordregex.test(password)
+if (validatepassword) {
+    console.log("password valido")
+} else {
+    console.log("password invalido")
 }
-
+return validatepassword;
+}
+// ejemplo
+const contraseñavalida = passwordFeedback("contraseña123456");
+console.log("contraseña valida", contraseñavalida)
 /**
  * 
  * @param {string} password Recibe una contraseña
@@ -53,8 +72,14 @@ const passwordFeedback = (password) =>{
  */
 
 const repeatPasswordFeedback = (password,repeatPassword) =>{
- 
-}
+ const passwordigual = password === repeatPassword
+ if (passwordigual){ 
+    console.log("contraseña valida");
+ } else {
+    console.log("contraseña invalida")
+ }
+ return passwordigual;
+};
 
 const showSuccesfulSignUpModal = () =>{
     const modal = new bootstrap.Modal(document.getElementById('succesfulSignupModal'))
@@ -69,8 +94,14 @@ const showSuccesfulSignUpModal = () =>{
  * @returns Si la información del formulario es valida, debe registrar al usuario, logearlo, mostrar el modal de registro exitoso y redirigirlo a la página principal. 
  */
 const signUpSubmit = (e) =>{
-    e.preventDefault()
-
-}
-
+    e.preventDefault();
+    const username = document.getElementsByID("username").value;
+    const password = document.getElementsByID("password").value;
+    const repeatPassword = document.getElementsByID("repeatPassword").value;
+    const formulariovalido = validacionformulario(username, password, repeatPassword);
+    if (formulariovalido) {
+        showSuccesfulSignUpModal();
+        setTimeout(redirectIndex, 3000);
+    }
+};
 signUpForm.addEventListener("submit", signUpSubmit)
