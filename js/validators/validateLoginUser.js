@@ -10,10 +10,8 @@ import { getUsers } from '../services/getUsers.js';
 export const validateLoginUser = ({ email, password }) => {
   const users = getUsers();
 
-  const usuarioEncontrado = users.find(
-    (user) => user.email === email && user.password === password
+  const usuarioEncontrado = users.some(
+    (usuario) => usuario.email === email && usuario.password === password
   );
-
-  console.log(usuarioEncontrado);
-  return !!usuarioEncontrado;
+  return console.log(usuarioEncontrado);
 };

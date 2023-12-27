@@ -3,12 +3,15 @@ import { validateLoginUser } from './validators/validateLoginUser.js';
 import { showPassword } from './utils/showPassword.js';
 import { setLoggedUser } from './services/setLoggedUser.js';
 import { redirectIndex } from './utils/redirectIndex.js';
+import { getUsers } from './services/getUsers.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   Navbar();
 });
 
 const showPasswordButton = document.getElementById('showPasswordBtn');
+
+const usuario = {};
 
 showPasswordButton.addEventListener('click', (e) => {
   showPassword(e);
@@ -37,7 +40,17 @@ const userLoginFeedback = (bool) => {
 const userLogin = (e) => {
   e.preventDefault();
 
-  
+  const inputMail = document.querySelector('#loginEmailInput');
+  const inputPassword = document.querySelector('#loginInputPassword');
+
+  usuario.email = inputMail.value;
+  usuario.password = inputPassword.value;
+
+  if (validateLoginUser(usuario)) {
+    return console.log('da true');
+  }
+  console.log('no da true');
 };
 
 loginForm.addEventListener('submit', userLogin);
+// {email: "admin@admin.com", password: "admin83i", role: "admin",…}

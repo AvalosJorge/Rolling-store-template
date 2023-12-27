@@ -9,6 +9,7 @@ export const getUsers = () => {
   if (usersString) {
     try {
       const users = JSON.parse(usersString);
+      console.log(users);
       return users;
     } catch (error) {
       console.error('Error al obtener los datos de usuarios:', error.message);
